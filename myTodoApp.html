@@ -1,0 +1,32 @@
+<html ng-app="myTodoApp">
+<head> <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js">
+	<link href='http://fonts.googleapis.com/css?family=Rouge+Script' rel='stylesheet' type='text/css'>
+</script>
+	<link rel="stylesheet" type="text/css" href="custom.css">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script></head>
+	<body style="text-align: center;">
+	<h1 class="h1mine"> A Simple Todo List </h1>
+		<script src="myTodoApp.js"></script>
+		<script src="myTodoCtrl.js"></script>
+		<div ng-controller="myTodoCtrl">
+			<ul class="unstyled">
+				<li data-ng-repeat="task in tasks track by $index ">
+					<span class="done-{{ task.done }}">  <h2 class="h2mine-{{task.done}}"> #{{$index+1}}
+						<input type="checkbox" style="width: 25px; height: 25px;" ng-model="task.done" ng-change="update()"> {{ task.name }} </h2> <p class="done-{{ task.done }}"> {{ task.desc }} </p></span>
+				</li>
+			</ul>
+			<h3 class="h3mine"> Add new task </h3> 
+			<textarea row="2" col="3" class="tb5" ng-model="newname">Task Name</textarea>
+			<textarea row="10" col="30" class="tb5" ng-model="newdesc">Describe your task</textarea>
+			<button ng-click="addTask()" type="button" class="btn btn-success"> Add New </button> <!-- StoredData: {{ storedData }} Tasks: {{tasks==0}} {{tasks}} -->
+			<button ng-click="archive()" type="button" class="btn btn-warning"> Purge</button>
+		</div>
+	</body>
+</html>
